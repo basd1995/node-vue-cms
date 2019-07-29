@@ -1,0 +1,17 @@
+{
+  "name": "node-moba-server",
+  "version": "1.0.0",
+  "description": "nodejs server",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js"
+  },
+  "author": "barry.cao",
+  "license": "MIT",
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.0.0-alpha.7",
+    "mongoose": "^5.6.7",
+    "nodemon": "^1.19.1"
+  }
+}
