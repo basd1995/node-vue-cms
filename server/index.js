@@ -3,6 +3,7 @@ const app = express();
 
 app.use(require('cors')()); //跨域模块
 app.use(express.json());
+app.use('/uploads', express.static(__dirname + '/uploads')) //静态资源
 
 require('./plugins/db')(app);
 require('./routes/admin')(app);

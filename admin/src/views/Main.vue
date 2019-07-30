@@ -59,8 +59,6 @@ export default {
   data() {
     return {};
   },
-  created() {
-    console.log(this.$route.fullPath);
-  }
+  created() {}
 };
 </script>
