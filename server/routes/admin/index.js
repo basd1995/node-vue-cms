@@ -1,10 +1,13 @@
 module.exports = app => {
   const express = require("express");
 
-  const router = express.Router();
+  const router = express.Router({
+    mergeParams: true
+  });
 
   //save
   router.post('/', async (req, res) => {
+    console.log(req.body)
     const model = await req.model.create(req.body);
     res.send(model);
   });
@@ -23,7 +26,12 @@ module.exports = app => {
 
   //get list
   router.get('/', async (req, res) => {
-    const items = await req.model.find().limit(10)
+    const queryOptions = {}
+    console.log(req.model.modelName)
+    if (req.model.modelName === 'Category') {
+      queryOptions.populate = 'parent';
+    }
+    const items = await req.model.find().setOptions(queryOptions).limit(10)
     res.send(items)
   });
 
@@ -33,8 +41,10 @@ module.exports = app => {
     res.send(model)
   });
 
-  app.use('/admin/api/rest/:resource', async (req, res) => {
+  app.use('/admin/api/rest/:resource', async (req, res, next) => {
+    console.log(req.params.resource)
     const modelName = require('inflection').classify(req.params.resource);
-    req.model = require(`../../models/${modelName}`)
+    req.model = require(`../../models/${modelName}`);
+    next();
   }, router);
 }
