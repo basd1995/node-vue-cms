@@ -29,7 +29,6 @@ export default {
   },
   data() {
     return {
-      parents: [],
       model: {}
     };
   },
@@ -54,14 +53,9 @@ export default {
     async fetch() {
       const res = await this.$http.get(`rest/items/${this.id}`);
       this.model = res.data;
-    },
-    async fetchParents() {
-      const res = await this.$http.get("rest/items");
-      this.parents = res.data;
     }
   },
   created() {
-    this.fetchParents();
     this.id && this.fetch();
   }
 };

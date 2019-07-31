@@ -47,7 +47,7 @@ export default {
     },
     async fetchParents() {
       const res = await this.$http.get("rest/categories");
-      this.parents = res.data;
+      this.parents = res.data.filter(obj => !obj.parent);
     }
   },
   created() {
