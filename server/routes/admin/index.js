@@ -33,6 +33,8 @@ module.exports = app => {
       queryOptions.populate = 'parent';
     } else if (req.Model.modelName === 'Hero') {
       queryOptions.populate = 'categories';
+    } else if (req.Model.modelName === 'Article') {
+      queryOptions.populate = 'category';
     }
     console.log(queryOptions);
     const items = await req.Model.find().setOptions(queryOptions);

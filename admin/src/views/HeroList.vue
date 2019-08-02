@@ -1,6 +1,6 @@
 <template>
   <div id="category-list">
-    <h1>新建分类</h1>
+    <h1>英雄列表</h1>
     <el-table :data="items">
       <el-table-column prop="_id" label="ID" width="240"></el-table-column>
       <el-table-column prop="name" label="英雄名称"></el-table-column>

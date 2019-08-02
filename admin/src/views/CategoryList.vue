@@ -1,6 +1,6 @@
 <template>
   <div id="category-list">
-    <h1>新建分类</h1>
+    <h1>分类列表</h1>
     <el-table :data="items">
       <el-table-column prop="_id" label="ID" width="240"></el-table-column>
       <el-table-column prop="parent.name" label="上级分类"></el-table-column>
