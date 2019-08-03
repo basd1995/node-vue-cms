@@ -18,6 +18,7 @@
       <el-form-item label="文章">
         <vue-editor
           :editor-toolbar="option"
+          :editorOptions="editorSettings"
           class="ql-editor-class"
           useCustomImageHandler
           @imageAdded="handleImageAdded"
@@ -61,7 +62,12 @@ export default {
         [{ color: [] }, { background: [] }], // dropdown with defaults from theme
         ["link", "image"],
         ["clean"]
-      ]
+      ],
+      editorSettings: {
+        modules: {
+          imageResize: {}
+        }
+      }
     };
   },
   methods: {
