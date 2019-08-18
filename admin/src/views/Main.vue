@@ -2,7 +2,7 @@
   <div id="main">
     <el-container style="height: 100vh;">
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu router :default-active="$route.path" :default-openeds="['2']" unique-opened>
+        <el-menu router :default-active="$route.path" :default-openeds="['1','2']" unique-opened>
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-message"></i>内容分类
@@ -26,6 +26,11 @@
               <template slot="title">文章</template>
               <el-menu-item index="/articles/create">新建文章</el-menu-item>
               <el-menu-item index="/articles/list">文章列表</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group>
+              <template slot="title">试题</template>
+              <el-menu-item index="/topics/create">新建试题</el-menu-item>
+              <el-menu-item index="/topics/list">试题列表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="2">

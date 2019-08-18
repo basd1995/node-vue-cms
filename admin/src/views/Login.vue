@@ -4,12 +4,24 @@
       <h1>login</h1>
 
       <div class="txtb">
-        <input v-model="username" @focus="isfocus = true" :class="{ focus: isfocus}" type="text" />
+        <input
+          v-model="username"
+          @focus="focusUsername = true"
+          @blur="focusUsername = username?true:false"
+          :class="{ focus: focusUsername}"
+          type="text"
+        />
         <span data-placeholder="Username"></span>
       </div>
 
       <div class="txtb">
-        <input v-model="password" type="password" />
+        <input
+          v-model="password"
+          @focus="focusPassword = true"
+          @blur="focusPassword = password?true:false"
+          :class="{ focus: focusPassword}"
+          type="password"
+        />
         <span data-placeholder="Password"></span>
       </div>
     </div>
@@ -19,9 +31,10 @@
 export default {
   data() {
     return {
-      isfocus: false,
-      username: "",
-      password: ""
+      focusUsername: false,
+      focusPassword: false,
+      username: null,
+      password: null
     };
   },
   methods: {
@@ -74,7 +87,7 @@ export default {
   transform: translateY(-50%);
   color: #adadad;
   z-index: -1;
-  transition: 0.5s;
+  transition: 0.4s;
 }
 .txtb span::after {
   content: "";
@@ -84,7 +97,7 @@ export default {
   width: 100%;
   height: 2px;
   background: linear-gradient(120deg, #3498db, #8e44ad);
-  transition: 0.5s;
+  transition: 0.4s;
 }
 .focus + span::before {
   top: -5px;

@@ -11,6 +11,7 @@ export default {
 </script>
 
 <style>
+@import "./assets/css/font.css";
 * {
   padding: 0;
   margin: 0;

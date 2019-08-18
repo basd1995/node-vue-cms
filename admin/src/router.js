@@ -11,6 +11,8 @@ import ArticleEdit from './views/ArticleEdit.vue'
 import ArticleList from './views/ArticleList.vue'
 import AdminUserEdit from './views/AdminUserEdit.vue'
 import AdminUserList from './views/AdminUserList.vue'
+import TopicEdit from './views/TopicEdit.vue'
+import TopicList from './views/TopicList.vue'
 import Login from './views/Login.vue'
 
 Vue.use(Router)
@@ -45,6 +47,10 @@ export default new Router({
         { path: '/admin_users/create', component: AdminUserEdit },
         { path: '/admin_users/edit/:id', component: AdminUserEdit, props: true },
         { path: '/admin_users/list', component: AdminUserList },
+
+        { path: '/topics/create', component: TopicEdit },
+        { path: '/topics/edit/:id', component: TopicEdit, props: true },
+        { path: '/topics/list', component: TopicList },
       ]
     }
   ]
