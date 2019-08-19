@@ -17,7 +17,6 @@
       </el-form-item>
       <el-form-item label="文章">
         <vue-editor
-          :editorOptions="editorSettings"
           :editor-toolbar="option"
           class="ql-editor-class"
           useCustomImageHandler
@@ -35,9 +34,6 @@
 import { VueEditor, Quill } from "vue2-editor";
 import katex from "katex";
 import "katex/dist/katex.min.css";
-// import { ImageResize } from "quill-image-resize-module";
-// Quill.register("modules/imageResize", ImageResize);
-console.log(Quill);
 export default {
   components: {
     VueEditor
@@ -65,12 +61,7 @@ export default {
         [{ color: [] }, { background: [] }], // dropdown with defaults from theme
         ["link", "image"],
         ["clean"]
-      ],
-      editorSettings: {
-        modules: {
-          imageResize: {}
-        }
-      }
+      ]
     };
   },
   methods: {

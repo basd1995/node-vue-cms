@@ -17,8 +17,6 @@
       </el-form-item>
       <el-form-item label="文章">
         <vue-editor
-          :customModules="customModulesForEditor"
-          :editorOptions="editorSettings"
           :editorToolbar="option"
           class="ql-editor-class"
           useCustomImageHandler
@@ -36,9 +34,6 @@
 import { VueEditor, Quill } from "vue2-editor";
 import katex from "katex";
 import "katex/dist/katex.min.css";
-const modules = {
-  ImageResize: {}
-};
 //quill编辑器的字体
 const fonts = [
   "Century-Gothic",
@@ -54,7 +49,6 @@ const fonts = [
 const Font = Quill.import("formats/font");
 Font.whitelist = fonts; //将字体加入到白名单
 Quill.register(Font, true);
-console.log(Quill);
 export default {
   components: {
     VueEditor
@@ -79,35 +73,29 @@ export default {
         ],
         ["blockquote", "code-block"],
         [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
-        [{ indent: "-1" }, { indent: "+1" }, { lineheight: [] }], // outdent/indent
+        [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
         [{ color: [] }, { background: [] }], // dropdown with defaults from theme
         ["link", "image"],
         ["clean"]
-      ],
-      customModulesForEditor: [{ alias: "imageResize", module: ImageResize }],
-      editorSettings: {
-        modules: {
-          imageResize: {}
-        }
-      }
+      ]
     };
   },
   methods: {
     async save() {
       let res;
       if (this.id) {
-        res = await this.$http.put(`rest/articles/${this.id}`, this.model);
+        res = await this.$http.put(`rest/topics/${this.id}`, this.model);
       } else {
-        res = await this.$http.post("rest/articles", this.model);
+        res = await this.$http.post("rest/topics", this.model);
       }
-      this.$router.push({ path: "/articles/list" });
+      this.$router.push({ path: "/topics/list" });
       this.$message({
         type: "success",
         message: "保存成功"
       });
     },
     async fetch() {
-      const res = await this.$http.get(`rest/articles/${this.id}`);
+      const res = await this.$http.get(`rest/topics/${this.id}`);
       this.model = res.data;
     },
     async fetchCategories() {

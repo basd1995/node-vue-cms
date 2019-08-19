@@ -3,7 +3,8 @@ module.exports = app => {
   const Category = require('../../models/Category');
   const Hero = require('../../models/Hero');
   const Item = require('../../models/Item');
-  const modelList = [Category, Hero, Item];
+  const Topic = require('../../models/Topic');
+  const modelList = [Category, Hero, Item, Topic];
   const router = express.Router({
     mergeParams: true
   });
@@ -36,7 +37,6 @@ module.exports = app => {
     } else if (req.Model.modelName === 'Article') {
       queryOptions.populate = 'category';
     }
-    console.log(queryOptions);
     const items = await req.Model.find().setOptions(queryOptions);
     res.send(items)
   });

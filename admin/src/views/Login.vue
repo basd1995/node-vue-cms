@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="login-form">
-      <h1>login</h1>
+      <h1>Login</h1>
 
       <div class="txtb">
         <input
@@ -24,6 +24,7 @@
         />
         <span data-placeholder="Password"></span>
       </div>
+      <button class="login-btn">Login</button>
     </div>
   </div>
 </template>
@@ -63,6 +64,7 @@ export default {
 .login-form > h1 {
   text-align: center;
   margin-top: 60px;
+  font-weight: 700;
 }
 .txtb {
   border-bottom: 2px solid #adadad;
@@ -104,6 +106,23 @@ export default {
 }
 .focus + span::after {
   width: 100%;
+}
+.login-btn {
+  display: block;
+  width: 100%;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: linear-gradient(120deg, #3498db, #8e44ad);
+  background-size: 200%;
+  cursor: pointer;
+  transition: 0.4s;
+  font-weight: 700;
+  font-size: 16px;
+}
+.login-btn:hover {
+  background-position: right;
 }
 </style>
 
